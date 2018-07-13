@@ -4,9 +4,9 @@ public class Strings {
     /**
      * Remove some particular chars from a string.
      *
-     * @param str "student"
+     * @param str        "student"
      * @param deleteChar 'u'
-     * @return  "stdent"
+     * @return           "stdent"
      */
     public static String removeChars(String str, char deleteChar) {
         if (str == null) {
@@ -22,8 +22,6 @@ public class Strings {
             fast++;
         }
         String result = new String(input, 0, slow); // char[] => String
-        System.out.println("Input: " + str + " delete: " + deleteChar);
-        System.out.println("Output: " + result);
         return result;
     }
 
@@ -32,7 +30,7 @@ public class Strings {
      * spaces happen) from input string.
      *
      * @param str "_ _ _ abc _ _ ed _ _ ef _ _"
-     * @return "abc_ed_ef"
+     * @return    "abc_ed_ef"
      */
     public static String removeExtraSpaces(String str) {
         char[] input = str.toCharArray();
@@ -52,8 +50,28 @@ public class Strings {
             wordCount++;
         }
         String result = new String(input, 0, slow);
-        System.out.println("Input: " + str);
-        System.out.println("Output: " + result);
         return result;
+    }
+
+    /**
+     * Remove duplicated and adjacent letters(leave only one letter in each duplicated section) in a string.
+     *
+     * @param str "a a b b _ _ c c"
+     * @return    "ab_c"
+     */
+    public static String removeDuplication(String str) {
+        if (str == null || str.length() <= 1) {
+            return str;
+        }
+        char[] input = str.toCharArray();
+        int slow = 1;
+        int fast = 1;
+        while (fast < input.length) {
+            if (input[fast] != input[slow - 1]) {
+                input[slow++] = input[fast];
+            }
+            fast++;
+        }
+        return new String(input, 0, slow);
     }
 }
