@@ -5,6 +5,7 @@ import static algorithm.Strings.removeChars;
 import static algorithm.Strings.removeExtraSpaces;
 import static algorithm.Strings.removeDuplication;
 import static algorithm.Strings.removeDuplicationRepeatedlyWithStack;
+import static algorithm.Strings.removeDuplicationRepeatedlyWithTwoPointers;
 
 class StringsTests {
     @Test
@@ -22,5 +23,9 @@ class StringsTests {
     @Test
     void removeDuplicationRepeatedlyWithStackTest() {
         assertEquals("z", removeDuplicationRepeatedlyWithStack("abbbbaz"));
+    }
+    @Test
+    void removeDuplicationRepeatedlyWithTwoPointersTest() {
+        assertEquals("z", removeDuplicationRepeatedlyWithTwoPointers("abbbbbaaz"));
     }
 }

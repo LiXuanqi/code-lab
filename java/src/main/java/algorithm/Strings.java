@@ -107,4 +107,23 @@ public class Strings {
         }
         return sb.toString();
     }
+    public static String removeDuplicationRepeatedlyWithTwoPointers(String str) {
+        if (str == null || str.length() <= 1) {
+            return str;
+        }
+        char[] input = str.toCharArray();
+        int slow = 1;
+        int fast = 1;
+        while (fast < input.length) {
+            if (slow == 0 || input[fast] != input[slow - 1]) {
+                input[slow++] = input[fast++];
+            } else {
+                while (input[fast] == input[slow - 1]) {
+                    fast++;
+                }
+                slow--;
+            }
+        }
+        return new String(input, 0, slow);
+    }
 }
