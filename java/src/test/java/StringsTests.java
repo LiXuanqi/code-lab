@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static algorithm.Strings.removeChars;
 import static algorithm.Strings.removeExtraSpaces;
 import static algorithm.Strings.removeDuplication;
+import static algorithm.Strings.removeDuplicationRepeatedlyWithStack;
 
 class StringsTests {
     @Test
@@ -17,5 +18,9 @@ class StringsTests {
     @Test
     void removeDuplicationTest() {
         assertEquals("ab c", removeDuplication("aabb  cc"));
+    }
+    @Test
+    void removeDuplicationRepeatedlyWithStackTest() {
+        assertEquals("z", removeDuplicationRepeatedlyWithStack("abbbbaz"));
     }
 }

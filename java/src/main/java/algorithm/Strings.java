@@ -1,5 +1,8 @@
 package algorithm;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Strings {
     /**
      * Remove some particular chars from a string.
@@ -73,5 +76,35 @@ public class Strings {
             fast++;
         }
         return new String(input, 0, slow);
+    }
+    /**
+     * Char de-duplication adjacent letters repeatedly
+     *
+     * @param str "abbbbaz" => "aaz" => "z"
+     * @return    "z"
+     */
+    public static String removeDuplicationRepeatedlyWithStack(String str) {
+        if (str == null || str.length() <= 1) {
+            return str;
+        }
+        List<Character> stack = new ArrayList<Character>();
+        int i = 0;
+        while (i < str.length()) {
+            char pivot = str.charAt(i);
+            if (stack.size() > 0 && str.charAt(i) == stack.get(stack.size() - 1)) {
+                while (i < str.length() && str.charAt(i) == pivot) {
+                    i++;
+                }
+                stack.remove(stack.size() - 1);
+            } else {
+                stack.add(str.charAt(i));
+                i++;
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        for (char c : stack) {
+            sb.append(c);
+        }
+        return sb.toString();
     }
 }
