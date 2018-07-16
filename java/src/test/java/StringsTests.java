@@ -7,6 +7,8 @@ import static algorithm.Strings.removeDuplication;
 import static algorithm.Strings.removeDuplicationRepeatedlyWithStack;
 import static algorithm.Strings.removeDuplicationRepeatedlyWithTwoPointers;
 import static algorithm.Strings.reverseWord;
+import static algorithm.Strings.shiftKPositions;
+import static algorithm.Strings.replaceFromLongToShort;
 
 class StringsTests {
     @Test
@@ -32,5 +34,13 @@ class StringsTests {
     @Test
     void reverseWordTest() {
         assertEquals("yahoo love I", reverseWord("I love yahoo"));
+    }
+    @Test
+    void shiftKPositionsTest() {
+        assertEquals("efabcd", shiftKPositions("abcdef", 2));
+    }
+    @Test
+    void replaceFromLongToShortTest() {
+        assertEquals("stuXXt", replaceFromLongToShort("student", "den", "XX"));
     }
 }

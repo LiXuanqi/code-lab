@@ -164,4 +164,49 @@ public class Strings {
             end--;
         }
     }
+    /**
+     * Shift the whole stirng to the right-hand side by k positions.
+     *
+     * @param str "abcdef"
+     * @param k 2
+     * @return "efabcd"
+     */
+    public static String shiftKPositions(String str, int k) {
+        if (str == null || str.length() == 0) {
+            return str;
+        }
+        char[] input = str.toCharArray();
+        reverse(input, 0, input.length - 1);
+        reverse(input, 0, k - 1);
+        reverse(input, k, input.length -1);
+        return new String(input);
+    }
+    /**
+     *  Replace characters in the string.
+     *
+     * @param str "student"
+     * @param target "den" (3)
+     * @param alternate "XX" (2)
+     * @return "stuXXt"
+     */
+    public static String replaceFromLongToShort(String str, String target, String alternate) {
+        int slow = 0;
+        int fast= 0;
+        char[] input = str.toCharArray();
+        while (fast < input.length) {
+            if (input[fast] == target.charAt(0)) {
+                int pivot = 0;
+                while (fast < input.length && pivot < target.length() && input[fast] == target.charAt(pivot)) {
+                    fast++;
+                    pivot++;
+                }
+                for (int i = 0; i < alternate.length(); i++) {
+                    input[slow++] = alternate.charAt(i);
+                }
+            } else {
+                input[slow++] = input[fast++];
+            }
+        }
+        return new String(input, 0, slow);
+    }
 }
