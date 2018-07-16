@@ -6,6 +6,7 @@ import static algorithm.Strings.removeExtraSpaces;
 import static algorithm.Strings.removeDuplication;
 import static algorithm.Strings.removeDuplicationRepeatedlyWithStack;
 import static algorithm.Strings.removeDuplicationRepeatedlyWithTwoPointers;
+import static algorithm.Strings.reverseWord;
 
 class StringsTests {
     @Test
@@ -27,5 +28,9 @@ class StringsTests {
     @Test
     void removeDuplicationRepeatedlyWithTwoPointersTest() {
         assertEquals("z", removeDuplicationRepeatedlyWithTwoPointers("abbbbbaaz"));
+    }
+    @Test
+    void reverseWordTest() {
+        assertEquals("yahoo love I", reverseWord("I love yahoo"));
     }
 }
