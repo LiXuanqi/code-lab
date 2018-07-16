@@ -1,6 +1,7 @@
 package algorithm;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Strings {
@@ -208,5 +209,40 @@ public class Strings {
             }
         }
         return new String(input, 0, slow);
+    }
+    /**
+     * Replace characters in the string.
+     *
+     * @param str "http://test_replace_.com"
+     * @param target "_" (1)
+     * @param alternate "20%" (2)
+     * @return "http://test20%replace20%.com"
+     */
+    public static String replaceFromShortToLong(String str, String target, String alternate) {
+        int count = 0;
+        for (int i = 0; i <= str.length() - target.length(); i++) {
+            if (target.equals(str.substring(i, i + target.length()))) {
+                count++;
+            }
+        }
+        char [] sa = str.toCharArray();
+        char[] input = Arrays.copyOf(sa, count * (alternate.length() - target.length()) + sa.length);
+        int slow = input.length - 1;
+        int fast = sa.length - 1;
+        while (fast >= 0) {
+            if (input[fast] == target.charAt(target.length() - 1)) {
+                int pivot = target.length() - 1;
+                while (fast >= 0 && pivot >= 0 && input[fast] == target.charAt(pivot)) {
+                    fast--;
+                    pivot--;
+                }
+                for (int i = alternate.length() - 1; i >= 0; i--) {
+                    input[slow--] = alternate.charAt(i);
+                }
+            } else {
+                input[slow--] = input[fast--];
+            }
+        }
+        return new String(input);
     }
 }

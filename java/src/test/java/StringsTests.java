@@ -9,6 +9,7 @@ import static algorithm.Strings.removeDuplicationRepeatedlyWithTwoPointers;
 import static algorithm.Strings.reverseWord;
 import static algorithm.Strings.shiftKPositions;
 import static algorithm.Strings.replaceFromLongToShort;
+import static algorithm.Strings.replaceFromShortToLong;
 
 class StringsTests {
     @Test
@@ -42,5 +43,9 @@ class StringsTests {
     @Test
     void replaceFromLongToShortTest() {
         assertEquals("stuXXt", replaceFromLongToShort("student", "den", "XX"));
+    }
+    @Test
+    void replaceFromShortToLongTest() {
+        assertEquals("http://test20%replace20%.com", replaceFromShortToLong("http://test_replace_.com", "_", "20%"));
     }
 }
