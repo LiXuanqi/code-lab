@@ -85,28 +85,28 @@ public class Strings {
      * @return    "z"
      */
     public static String removeDuplicationRepeatedlyWithStack(String str) {
-        if (str == null || str.length() <= 1) {
+        if (str == null || str.length() == 0) {
             return str;
         }
-        List<Character> stack = new ArrayList<Character>();
+        char[] input = str.toCharArray();
+        List<Character> stack = new ArrayList<>();
         int i = 0;
-        while (i < str.length()) {
-            char pivot = str.charAt(i);
-            if (stack.size() > 0 && str.charAt(i) == stack.get(stack.size() - 1)) {
-                while (i < str.length() && str.charAt(i) == pivot) {
+        while (i < input.length) {
+            if (i < input.length && stack.size() != 0 && input[i] == stack.get(stack.size() - 1)) {
+                char pivot = input[i];
+                while (i < input.length && input[i] == pivot) {
                     i++;
                 }
                 stack.remove(stack.size() - 1);
             } else {
-                stack.add(str.charAt(i));
-                i++;
+                stack.add(input[i++]);
             }
         }
-        StringBuilder sb = new StringBuilder();
-        for (char c : stack) {
-            sb.append(c);
+        char[] result = new char[stack.size()];
+        for (int j = 0; j < stack.size(); j++) {
+          result[j] = stack.get(j);
         }
-        return sb.toString();
+        return new String(result);
     }
     public static String removeDuplicationRepeatedlyWithTwoPointers(String str) {
         if (str == null || str.length() <= 1) {
