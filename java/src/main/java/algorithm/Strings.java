@@ -37,24 +37,27 @@ public class Strings {
      * @return    "abc_ed_ef"
      */
     public static String removeExtraSpaces(String str) {
+        if (str == null || str.length() == 0) {
+            return str;
+        }
         char[] input = str.toCharArray();
         int slow = 0;
         int fast = 0;
-        int wordCount = 0;
+        int count = 0;
         while (fast < input.length) {
-            while (fast < input.length && input[fast] == ' ') {
+            if (input[fast] == ' ') {
                 fast++;
+                continue;
             }
-            if (fast < input.length && wordCount > 0) {
+            if (count != 0) {
                 input[slow++] = ' ';
             }
             while (fast < input.length && input[fast] != ' ') {
                 input[slow++] = input[fast++];
             }
-            wordCount++;
+            count++;
         }
-        String result = new String(input, 0, slow);
-        return result;
+        return new String(input, 0, slow);
     }
 
     /**
@@ -108,6 +111,12 @@ public class Strings {
         }
         return new String(result);
     }
+    /**
+     * Char de-duplication adjacent letters repeatedly
+     *
+     * @param str "abbbbaz" => "aaz" => "z"
+     * @return    "z"
+     */
     public static String removeDuplicationRepeatedlyWithTwoPointers(String str) {
         if (str == null || str.length() <= 1) {
             return str;
@@ -119,7 +128,7 @@ public class Strings {
             if (slow == 0 || input[fast] != input[slow - 1]) {
                 input[slow++] = input[fast++];
             } else {
-                while (input[fast] == input[slow - 1]) {
+                while (fast < input.length && input[fast] == input[slow - 1]) {
                     fast++;
                 }
                 slow--;
