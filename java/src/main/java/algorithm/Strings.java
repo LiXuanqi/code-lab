@@ -254,4 +254,33 @@ public class Strings {
         }
         return new String(input);
     }
+
+    /**
+     * Shuffling String.
+     *
+     * @param str "ABCD1234"
+     * @return "A1B2C3D4"
+     */
+//    public static String shuffling(String str) {
+//
+//    }
+
+    /**
+     * Shuffling String reversely.
+     *
+     * @param str "A1B2C3D4"
+     * @return "ABCD1234"
+     */
+//    public static String reverseShuffling(String str) {
+//
+//    }
+
+    /**
+     * Encoding the length of String.
+     * @param str "aaaabccaaaaa"
+     * @return "a4b1c2a5"
+     */
+//    public static String lengthEncoding(String str) {
+//
+//    }
 }
