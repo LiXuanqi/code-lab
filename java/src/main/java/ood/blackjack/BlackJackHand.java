@@ -14,5 +14,6 @@ public class BlackJackHand extends Hand {
     public int score() {
         List<Card> cards = this.getCards();
         // TODO: DFS
+        return -1;
     }
 }
